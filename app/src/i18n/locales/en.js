@@ -13,6 +13,8 @@ export default {
   'common.max': 'MAX',
   'common.or': 'OR',
   'common.select': 'Select',
+  'common.status': 'Status',
+  'common.date': 'Date',
   'common.retry': 'Retry',
   'common.somethingWrong': 'Something went wrong. Please try again.',
 

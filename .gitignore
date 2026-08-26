@@ -8,3 +8,4 @@ brand/_*.png
 server/*.db
 shots-*/
 *.code-workspace
+docs/_preview/

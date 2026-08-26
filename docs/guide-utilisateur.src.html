@@ -1,0 +1,700 @@
+<title>Portefeuille DeFicoins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>/* STYLE */</style>
+
+<div class="wrap">
+
+  <aside class="rail">
+    <div class="rail-brand">
+      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="m1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#22D3EE"/><stop offset="55%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#4F46E5"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#m1)"/>
+        <g fill="#fff">
+          <path fill-rule="evenodd" d="M16 12h16a20 20 0 0 1 0 40H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Zm16 9a11 11 0 0 0 0 22 11 11 0 0 0 0-22Z"/>
+          <path d="M32 25.5l5.6 3.25v6.5L32 38.5l-5.6-3.25v-6.5z"/>
+        </g>
+      </svg>
+      DeFicoins
+    </div>
+    <nav aria-label="Sommaire">
+      <span class="rail-group">Démarrer</span>
+      <a href="#comprendre">Comment ça marche</a>
+      <a href="#creer">Créer votre portefeuille</a>
+      <a href="#connexion">Se connecter</a>
+      <a href="#langue">Changer de langue</a>
+      <span class="rail-group">Au quotidien</span>
+      <a href="#accueil">L’écran d’accueil</a>
+      <a href="#marche">Suivre le marché</a>
+      <a href="#recevoir">Recevoir</a>
+      <a href="#envoyer">Envoyer</a>
+      <a href="#echanger">Échanger</a>
+      <a href="#acheter">Acheter</a>
+      <a href="#historique">Historique</a>
+      <span class="rail-group">Compte</span>
+      <a href="#support">Contacter le support</a>
+      <a href="#parametres">Paramètres</a>
+      <a href="#oublie">Mot de passe oublié</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#problemes">En cas de problème</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <header class="hero">
+      <svg class="hero-mark" viewBox="0 0 64 64" role="img" aria-label="DeFicoins">
+        <defs>
+          <linearGradient id="m2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#22D3EE"/><stop offset="55%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#4F46E5"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#m2)"/>
+        <g fill="#fff">
+          <path fill-rule="evenodd" d="M16 12h16a20 20 0 0 1 0 40H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Zm16 9a11 11 0 0 0 0 22 11 11 0 0 0 0-22Z"/>
+          <path d="M32 25.5l5.6 3.25v6.5L32 38.5l-5.6-3.25v-6.5z"/>
+        </g>
+      </svg>
+      <p class="eyebrow">Guide utilisateur</p>
+      <h1>Votre portefeuille DeFicoins</h1>
+      <p class="lede">
+        Tout ce que vous pouvez faire depuis l’application : recevoir, envoyer,
+        échanger et acheter, écran par écran.
+      </p>
+      <div class="hero-rule"></div>
+    </header>
+
+    <!-- ------------------------------------------------ comprendre -->
+    <section id="comprendre">
+      <h2>Comment ça marche</h2>
+      <p class="section-note">À lire une fois, avant de commencer.</p>
+
+      <p>
+        DeFicoins est un <strong>portefeuille administré</strong>. Vos avoirs sont
+        tenus par DeFicoins sur un registre interne, et notre équipe intervient à
+        deux moments précis :
+      </p>
+      <ul>
+        <li>
+          <strong>Quand de l’argent entre.</strong> Un dépôt ou un achat est crédité
+          sur votre compte par notre équipe, une fois votre paiement reçu.
+        </li>
+        <li>
+          <strong>Quand de l’argent sort.</strong> Chaque envoi est vérifié par notre
+          équipe avant d’être exécuté. C’est pour cela qu’un envoi apparaît d’abord
+          <span class="pill pill-warn">En attente</span> dans votre historique.
+        </li>
+      </ul>
+      <p>
+        Entre les deux, tout est immédiat : consulter vos soldes, suivre le marché,
+        échanger une devise contre une autre.
+      </p>
+
+      <div class="note note-info">
+        <span class="tag">Bon à savoir</span>
+        <p>
+          Les échanges (<em>Échanger</em>) sont traités instantanément et n’ont pas
+          besoin de validation : ils se font à l’intérieur de votre propre
+          portefeuille. C’est pourquoi l’écran indique <code>Réseau : Interne</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ créer -->
+    <section id="creer">
+      <h2>Créer votre portefeuille</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Depuis l’écran d’accueil, touchez <strong>Créer un portefeuille</strong>.
+            Quatre champs suffisent.
+          </p>
+          <ol class="steps">
+            <li><strong>Nom</strong> Votre nom complet, tel qu’il apparaîtra dans l’application.</li>
+            <li><strong>E-mail</strong> Il servira d’identifiant de connexion. Utilisez une adresse à laquelle vous avez accès.</li>
+            <li><strong>Mot de passe</strong> Huit caractères minimum. L’icône en forme d’œil permet de vérifier ce que vous tapez.</li>
+            <li><strong>Confirmation</strong> Le même mot de passe. S’il diffère, l’application vous le signale avant validation.</li>
+          </ol>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-03-creation.jpg" alt="Écran de création de portefeuille avec les champs nom, e-mail, mot de passe et confirmation">
+        </figure>
+      </div>
+
+      <h3>La phrase de récupération</h3>
+
+      <div class="split reverse">
+        <figure class="phone">
+          <img src="shots/u-04-phrase.jpg" alt="Écran affichant douze mots numérotés, un bouton de copie et un avertissement">
+        </figure>
+        <div class="body">
+          <p>
+            Juste après la création, l’application affiche <strong>douze mots</strong>.
+            Notez-les dans l’ordre, sur papier, et rangez-les en lieu sûr. Le bouton
+            <em>Copier dans le presse-papiers</em> vous permet de les coller
+            temporairement dans un gestionnaire de mots de passe.
+          </p>
+          <p>
+            Ces mots ne vous seront jamais redemandés par notre équipe. Personne chez
+            DeFicoins ne vous les demandera, par aucun canal.
+          </p>
+          <div class="note note-danger">
+            <span class="tag">Jamais</span>
+            <p>
+              Ne partagez ces douze mots avec personne, ne les photographiez pas, ne
+              les saisissez sur aucun autre site. Quiconque les obtient peut se faire
+              passer pour vous auprès du support.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="note note-info">
+        <span class="tag">Si vous perdez tout</span>
+        <p>
+          En pratique, la récupération d’un accès perdu passe par notre support, pas
+          par ces douze mots : voir <a href="#oublie">Mot de passe oublié</a>. Notez-les
+          quand même — ils servent de preuve d’identité si nous devons vérifier que le
+          compte est bien le vôtre.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ connexion -->
+    <section id="connexion">
+      <h2>Se connecter</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Saisissez l’e-mail et le mot de passe de votre compte, puis touchez
+            <strong>Déverrouiller</strong>.
+          </p>
+          <p>
+            Si le message <em>« E-mail ou mot de passe incorrect »</em> apparaît,
+            vérifiez d’abord la casse et les espaces en fin de saisie. L’icône en forme
+            d’œil affiche le mot de passe en clair le temps de le relire.
+          </p>
+          <p>
+            L’application vous garde connecté sur cet appareil. Vous n’aurez à ressaisir
+            votre mot de passe que si vous vous déconnectez depuis les
+            <a href="#parametres">Paramètres</a>.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-01-connexion.jpg" alt="Écran de connexion DeFicoins avec les champs e-mail et mot de passe">
+        </figure>
+      </div>
+
+      <div class="note note-warn">
+        <span class="tag">Compte suspendu</span>
+        <p>
+          Le message <em>« Ce compte a été suspendu »</em> signifie qu’un administrateur
+          a bloqué l’accès. Écrivez à notre support pour en connaître la raison.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ langue -->
+    <section id="langue">
+      <h2>Changer de langue</h2>
+
+      <div class="split reverse">
+        <figure class="phone">
+          <img src="shots/u-02-langues.jpg" alt="Sélecteur de langue affichant huit langues disponibles">
+        </figure>
+        <div class="body">
+          <p>
+            Touchez le <strong>drapeau en haut à droite</strong> de l’écran de connexion,
+            ou passez par <em>Paramètres → Langue</em> une fois connecté.
+          </p>
+          <p>
+            Huit langues sont disponibles : anglais, espagnol, français, allemand,
+            portugais, chinois, japonais et coréen. Votre choix est mémorisé sur
+            l’appareil et s’applique immédiatement, y compris aux montants et aux dates.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ accueil -->
+    <section id="accueil">
+      <h2>L’écran d’accueil</h2>
+      <p class="section-note">Le point de départ de toutes les opérations.</p>
+
+      <div class="split">
+        <div class="body">
+          <p>De haut en bas :</p>
+          <dl class="kv">
+            <div><dt>Votre nom</dt><dd>En haut à gauche, avec vos initiales.</dd></div>
+            <div><dt>Solde total</dt><dd>La valeur de tous vos avoirs, convertie en dollars.</dd></div>
+            <div><dt>↻ Actualiser</dt><dd>Recharge les cours du marché et recalcule votre solde.</dd></div>
+            <div><dt>👁 Masquer</dt><dd>Remplace tous les montants par des points.</dd></div>
+            <div><dt>Cinq boutons</dt><dd>Envoyer, Échanger, Recevoir, Historique, Acheter.</dd></div>
+            <div><dt>Crypto / NFT</dt><dd>Vos avoirs, puis le marché en direct en dessous.</dd></div>
+          </dl>
+          <p>
+            Seules les devises dont vous détenez un solde apparaissent dans la liste du
+            haut. Les autres restent consultables dans la section <em>Marché</em>.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-05-accueil.jpg" alt="Écran d’accueil montrant le solde total, les cinq boutons d’action et la liste des avoirs">
+        </figure>
+      </div>
+
+      <h3>Masquer vos montants</h3>
+      <div class="split reverse">
+        <figure class="phone">
+          <img src="shots/u-18-solde-masque.jpg" alt="Écran d’accueil avec tous les montants remplacés par des points">
+        </figure>
+        <div class="body">
+          <p>
+            L’icône en forme d’œil, à droite du solde, masque d’un seul geste
+            <strong>tous</strong> les montants de l’écran : le total, les quantités et
+            les contre-valeurs.
+          </p>
+          <p>
+            Pratique dans les transports ou en réunion. Le réglage reste actif jusqu’à
+            ce que vous touchiez à nouveau l’icône, même après avoir fermé l’application.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ marché -->
+    <section id="marche">
+      <h2>Suivre le marché</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Sous vos avoirs, la section <strong>Marché</strong> affiche le cours des
+            quatorze devises disponibles. Le badge
+            <span class="pill pill-ok">EN DIRECT</span> indique que les cours sont
+            rafraîchis automatiquement.
+          </p>
+          <p>
+            Chaque ligne donne le prix en dollars et la variation sur vingt-quatre
+            heures : en vert à la hausse, en rouge à la baisse, en gris quand elle est
+            nulle.
+          </p>
+          <p>
+            Toucher une ligne ouvre l’écran <em>Recevoir</em> pour cette devise — le
+            chemin le plus court pour obtenir votre adresse de dépôt.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-06-marche.jpg" alt="Liste du marché avec les cours et variations sur vingt-quatre heures">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ recevoir -->
+    <section id="recevoir">
+      <h2>Recevoir</h2>
+      <p class="section-note">Obtenir l’adresse où faire envoyer des fonds.</p>
+
+      <div class="split">
+        <div class="body">
+          <ol class="steps">
+            <li><strong>Choisissez la devise</strong> Touchez le sélecteur en haut pour ouvrir la liste et chercher une devise par nom ou par symbole.</li>
+            <li><strong>Partagez l’adresse</strong> Faites scanner le QR code, ou touchez le bouton bleu pour copier l’adresse et l’envoyer par message.</li>
+            <li><strong>Attendez la validation</strong> Les fonds apparaissent dans votre solde une fois le versement confirmé par notre équipe.</li>
+          </ol>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-07-recevoir.jpg" alt="Écran Recevoir affichant un QR code et l’adresse de portefeuille Bitcoin">
+        </figure>
+      </div>
+
+      <div class="note note-warn">
+        <span class="tag">Attention</span>
+        <p>
+          <strong>Chaque devise a sa propre adresse.</strong> L’adresse Bitcoin ne
+          fonctionne que pour du Bitcoin. Vérifiez toujours que le symbole affiché
+          au-dessus du QR code correspond à ce que vous attendez.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <figure>
+          <div class="phone"><img src="shots/u-08-choix-devise.jpg" alt="Liste de sélection des devises avec champ de recherche"></div>
+          <figcaption>Le sélecteur de devise, commun aux écrans Recevoir, Envoyer et Échanger.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ envoyer -->
+    <section id="envoyer">
+      <h2>Envoyer</h2>
+      <p class="section-note">Transférer des fonds vers une adresse extérieure.</p>
+
+      <div class="split">
+        <div class="body">
+          <ol class="steps">
+            <li><strong>Choisissez la devise</strong> Les pastilles du haut reprennent les devises que vous détenez. Le chevron ouvre la liste complète.</li>
+            <li><strong>Saisissez le montant</strong> La contre-valeur en dollars s’affiche en dessous. <em>MAX</em> reprend la totalité du solde disponible.</li>
+            <li><strong>Collez l’adresse du destinataire</strong> Une coche verte confirme que l’adresse a le bon format pour la devise choisie.</li>
+            <li><strong>Confirmez</strong> Le bouton ne s’active que si le montant et l’adresse sont tous les deux valides.</li>
+          </ol>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-09-envoyer-valide.jpg" alt="Écran Envoyer avec un montant de 250 USDC et une adresse validée par une coche verte">
+        </figure>
+      </div>
+
+      <h3>Quand l’adresse n’est pas valide</h3>
+      <div class="split reverse">
+        <figure class="phone">
+          <img src="shots/u-10-envoyer-invalide.jpg" alt="Écran Envoyer avec un cadre rouge et le message : cette adresse USDC ne semble pas valide">
+        </figure>
+        <div class="body">
+          <p>
+            Le cadre passe au rouge et le bouton reste inactif. C’est un garde-fou :
+            l’application vérifie que l’adresse a bien la forme attendue pour la devise
+            sélectionnée.
+          </p>
+          <p>Les causes les plus fréquentes :</p>
+          <ul>
+            <li>une adresse copiée <strong>incomplètement</strong> ;</li>
+            <li>une adresse <strong>d’une autre devise</strong> — une adresse Bitcoin collée dans un envoi USDC, par exemple ;</li>
+            <li>un espace ou un retour à la ligne collé avec l’adresse.</li>
+          </ul>
+          <p>Recopiez l’adresse entière depuis sa source d’origine.</p>
+        </div>
+      </div>
+
+      <div class="note note-warn">
+        <span class="tag">Après l’envoi</span>
+        <p>
+          Le montant est <strong>immédiatement déduit</strong> de votre solde
+          disponible, et la transaction apparaît
+          <span class="pill pill-warn">En attente</span> dans votre historique. Notre
+          équipe la vérifie puis l’exécute. Si elle est refusée, le montant vous est
+          intégralement recrédité.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ échanger -->
+    <section id="echanger">
+      <h2>Échanger</h2>
+      <p class="section-note">Convertir une devise en une autre, immédiatement.</p>
+
+      <div class="split">
+        <div class="body">
+          <ol class="steps">
+            <li><strong>Vous payez</strong> Choisissez la devise à convertir et le montant. <em>Disponible</em> rappelle votre solde.</li>
+            <li><strong>Vous recevez</strong> Choisissez la devise d’arrivée. Le montant se calcule tout seul.</li>
+            <li><strong>Vérifiez le taux</strong> La ligne <em>Taux</em> affiche la conversion appliquée au moment du calcul.</li>
+            <li><strong>Confirmez</strong> Les deux soldes sont mis à jour aussitôt.</li>
+          </ol>
+          <p>
+            Le bouton de double flèche, entre les deux blocs, intervertit les devises.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-11-echanger.jpg" alt="Écran Échanger convertissant 0,05 BTC en USDT, avec le taux et la mention Réseau interne">
+        </figure>
+      </div>
+
+      <div class="note note-info">
+        <span class="tag">Frais et taux</span>
+        <p>
+          Une commission de <strong>0,5 %</strong> est appliquée à l’échange. Le taux
+          suit le cours du marché au moment de la conversion : il peut donc bouger
+          légèrement entre l’affichage et la confirmation.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ acheter -->
+    <section id="acheter">
+      <h2>Acheter</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Le bouton <strong>Acheter</strong> ouvre un panneau depuis le bas de l’écran.
+            Choisissez une devise dans la grille, saisissez un montant en dollars, puis
+            touchez <strong>Continuer</strong>.
+          </p>
+          <p>
+            Votre demande est transmise à notre équipe et <strong>la conversation
+            support s’ouvre automatiquement</strong>. C’est là que nous vous indiquerons
+            le moyen de paiement et que nous confirmerons la réception des fonds.
+          </p>
+          <p>
+            Une fois le paiement reçu, le montant est crédité sur votre portefeuille et
+            apparaît dans votre historique.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-14-acheter.jpg" alt="Panneau Acheter avec une grille de devises et un champ de montant en dollars">
+        </figure>
+      </div>
+
+      <div class="note note-info">
+        <span class="tag">Montant minimum</span>
+        <p>L’achat minimum est de <strong>20 $</strong>. En dessous, le bouton refuse la demande.</p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ historique -->
+    <section id="historique">
+      <h2>Historique</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Toutes vos opérations, de la plus récente à la plus ancienne. Chaque ligne
+            indique le type, la date, l’état, la quantité et la contre-valeur en
+            dollars.
+          </p>
+          <p>Touchez une ligne pour en voir le détail complet.</p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-12-historique.jpg" alt="Liste de l’historique des transactions avec leurs états">
+        </figure>
+      </div>
+
+      <h3>Les quatre états</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>État</th><th>Ce que ça veut dire</th><th>Ce qu’il faut faire</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill pill-warn">En attente</span></td>
+              <td>La demande est enregistrée et attend la vérification de notre équipe.</td>
+              <td>Rien. Le montant est déjà réservé sur votre solde.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-info">Effectuée</span></td>
+              <td>L’opération est terminée.</td>
+              <td>Rien.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-danger">Annulée</span></td>
+              <td>La demande a été refusée par notre équipe.</td>
+              <td>Le montant a été recrédité. Contactez le support pour en connaître la raison.</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-danger">Échouée</span></td>
+              <td>L’opération n’a pas pu aboutir.</td>
+              <td>Contactez le support.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="split reverse">
+        <figure class="phone">
+          <img src="shots/u-13-historique-detail.jpg" alt="Fiche détaillée d’un envoi Bitcoin avec montant, adresse, réseau, statut et date">
+        </figure>
+        <div class="body">
+          <p>
+            La fiche de détail reprend le montant exact, la contre-valeur au moment de
+            l’opération, l’adresse du destinataire, le réseau, l’état et la date.
+          </p>
+          <p>
+            C’est cette fiche qu’il faut avoir sous les yeux si vous écrivez au support
+            au sujet d’une transaction.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ support -->
+    <section id="support">
+      <h2>Contacter le support</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Le <strong>bouton bleu rond</strong>, en bas à droite de l’écran, ouvre la
+            conversation avec notre équipe. Il est présent sur presque tous les écrans.
+          </p>
+          <p>
+            Écrivez votre message, touchez la flèche d’envoi. Les réponses de notre
+            équipe apparaissent dans la même conversation — inutile de rester sur
+            l’écran, elles vous attendront à votre retour.
+          </p>
+          <p>
+            Le lien <em>Écrivez-nous</em>, en haut de la conversation, ouvre votre
+            messagerie si vous préférez l’e-mail.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-15-support.jpg" alt="Conversation support avec des messages du client et de l’équipe">
+        </figure>
+      </div>
+
+      <h4>Ce qui nous aide à vous répondre vite</h4>
+      <ul>
+        <li>Le <strong>type</strong> d’opération concernée et sa <strong>date</strong>.</li>
+        <li>Le <strong>montant</strong> et la <strong>devise</strong>.</li>
+        <li>Ce que vous attendiez, et ce que vous avez vu à la place.</li>
+      </ul>
+
+      <div class="note note-danger">
+        <span class="tag">Jamais</span>
+        <p>
+          Notre équipe ne vous demandera <strong>jamais</strong> votre mot de passe ni
+          vos douze mots de récupération. Si un message vous les réclame, c’est une
+          tentative de fraude : ne répondez pas et signalez-le-nous.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ paramètres -->
+    <section id="parametres">
+      <h2>Paramètres</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Accessibles par l’<strong>icône d’engrenage</strong> en haut à droite de
+            l’écran d’accueil.
+          </p>
+          <dl class="kv">
+            <div><dt>Profil</dt><dd>Votre nom et votre adresse e-mail.</dd></div>
+            <div><dt>Langue</dt><dd>Les huit langues de l’application.</dd></div>
+            <div><dt>Devise d’affichage</dt><dd>La devise dans laquelle vos soldes sont convertis.</dd></div>
+            <div><dt>Notifications</dt><dd>Les alertes de l’application.</dd></div>
+            <div><dt>Aide et support</dt><dd>Ouvre la conversation avec notre équipe.</dd></div>
+            <div><dt>Se déconnecter</dt><dd>Ferme la session sur cet appareil.</dd></div>
+          </dl>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-16-parametres.jpg" alt="Écran Paramètres listant profil, sécurité, langue, devise et déconnexion">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ oublié -->
+    <section id="oublie">
+      <h2>Mot de passe oublié</h2>
+
+      <div class="split">
+        <div class="body">
+          <p>
+            Depuis l’écran de connexion, touchez
+            <strong>Récupérer un portefeuille</strong>, saisissez votre e-mail et
+            validez.
+          </p>
+          <p>
+            <strong>Aucun e-mail automatique ne vous sera envoyé.</strong> Votre demande
+            est transmise à notre équipe, qui définit un nouveau mot de passe et vous le
+            communique dans votre conversation support.
+          </p>
+          <p>
+            Une fois reconnecté avec ce mot de passe provisoire, changez-le depuis
+            <em>Paramètres → Changer le mot de passe</em>.
+          </p>
+        </div>
+        <figure class="phone">
+          <img src="shots/u-17-mot-de-passe-oublie.jpg" alt="Écran de récupération avec un champ e-mail et le bouton Demander une réinitialisation">
+        </figure>
+      </div>
+
+      <div class="note note-info">
+        <span class="tag">Toujours la même réponse</span>
+        <p>
+          L’écran affiche le même message de confirmation que l’adresse existe ou non.
+          C’est volontaire : cela empêche quelqu’un d’utiliser ce formulaire pour
+          découvrir quelles adresses ont un compte chez nous.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ sécurité -->
+    <section id="securite">
+      <h2>Sécurité</h2>
+
+      <h4>Ce que vous devriez faire</h4>
+      <ul>
+        <li>Choisir un mot de passe <strong>long et unique</strong>, qui ne sert à aucun autre service.</li>
+        <li>Conserver vos douze mots <strong>hors ligne</strong>, sur papier, à l’abri.</li>
+        <li>Utiliser l’icône <strong>œil</strong> pour masquer vos montants en public.</li>
+        <li>Vous <strong>déconnecter</strong> sur un appareil que vous ne gardez pas.</li>
+        <li><strong>Relire l’adresse</strong> du destinataire avant chaque envoi.</li>
+      </ul>
+
+      <h4>Ce que vous ne devriez jamais faire</h4>
+      <ul>
+        <li>Communiquer votre mot de passe ou vos douze mots, <strong>à qui que ce soit</strong>.</li>
+        <li>Les saisir sur un site qui ressemble à DeFicoins sans en être.</li>
+        <li>Répondre à un message pressant qui vous demande d’agir « immédiatement ».</li>
+      </ul>
+
+      <div class="note note-warn">
+        <span class="tag">Vérifiez l’adresse du site</span>
+        <p>
+          Avant de saisir votre mot de passe, contrôlez l’adresse dans la barre de votre
+          navigateur. Les sites d’hameçonnage imitent l’apparence d’une application au
+          pixel près — l’adresse, elle, ne peut pas être copiée.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ problèmes -->
+    <section id="problemes">
+      <h2>En cas de problème</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Ce que vous constatez</th><th>Ce qu’il faut faire</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mon envoi est <em>En attente</em> depuis un moment</td>
+              <td>C’est le fonctionnement normal : chaque envoi est vérifié par notre équipe. Si l’attente vous paraît anormalement longue, écrivez-nous en précisant la date et le montant.</td>
+            </tr>
+            <tr>
+              <td>Mon solde n’a pas bougé après un dépôt</td>
+              <td>Un dépôt est crédité par notre équipe une fois le paiement reçu. Touchez ↻ pour actualiser, puis contactez le support si rien ne change.</td>
+            </tr>
+            <tr>
+              <td>Le bouton <em>Confirmer l’envoi</em> reste grisé</td>
+              <td>Le montant est vide ou dépasse votre solde, ou l’adresse n’est pas valide. Un message rouge sous le champ concerné indique lequel des deux.</td>
+            </tr>
+            <tr>
+              <td>« Solde insuffisant » alors que j’ai le montant</td>
+              <td>Un envoi en attente réserve déjà une partie de votre solde. Vérifiez votre historique.</td>
+            </tr>
+            <tr>
+              <td>Les cours ne s’actualisent plus</td>
+              <td>Touchez ↻. Si le problème persiste, votre connexion est peut-être en cause — vos soldes, eux, restent intacts.</td>
+            </tr>
+            <tr>
+              <td>« Ce compte a été suspendu »</td>
+              <td>Un administrateur a bloqué l’accès. Contactez le support.</td>
+            </tr>
+            <tr>
+              <td>J’ai envoyé sur la mauvaise adresse</td>
+              <td>Écrivez-nous <strong>immédiatement</strong> avec le détail de la transaction. Si elle est encore <em>En attente</em>, elle peut être annulée.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="docfoot">
+      <p>
+        Guide utilisateur DeFicoins — les captures proviennent de l’application réelle.
+        Les montants et les noms qui y figurent sont ceux d’un compte de démonstration.
+      </p>
+    </footer>
+
+  </main>
+</div>

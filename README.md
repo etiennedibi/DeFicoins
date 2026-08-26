@@ -141,6 +141,25 @@ the address has an account, so it cannot be used to discover who is registered;
 and it will not raise a second request for the same account within 15 minutes,
 so it cannot be replayed to flood the queue.
 
+## Guides
+
+Two illustrated guides live in `docs/`, written in French from real screenshots
+of the running app:
+
+- `guide-utilisateur.html` — every wallet feature, screen by screen.
+- `guide-admin.html` — the console, with the client-to-admin flows drawn out
+  (transfer approval, password reset, buy order, deposit).
+
+Both are single self-contained files. To rebuild after a UI change:
+
+```bash
+node scripts/doc-shots.mjs   # re-capture, needs the server running and Chrome
+node docs/build.mjs          # optimise and inline the images
+```
+
+`docs/_style.css` is shared by both; `docs/*.src.html` are the sources, and the
+built `docs/*.html` are the files to publish.
+
 ## Known gaps
 
 - **NFTs tab is an empty state**, as in the reference.

@@ -12,6 +12,8 @@ export default {
   'common.max': '最大',
   'common.or': 'または',
   'common.select': '選択',
+  'common.status': 'ステータス',
+  'common.date': '日付',
   'common.retry': '再試行',
   'common.somethingWrong': 'エラーが発生しました。もう一度お試しください。',
 

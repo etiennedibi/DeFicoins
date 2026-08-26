@@ -86,7 +86,8 @@ export default function History() {
             {detail.note && <Row label="Note" value={detail.note} />}
             <Row label={t('swap.network')}
                  value={detail.type === 'swap' ? t('swap.internal') : (assets.find((a) => a.symbol === detail.coin)?.chain || '—')} />
-            <Row label={t('status.' + detail.status)} value={txDate(detail.created_at, lang)} />
+            <Row label={t('common.status')} value={t('status.' + detail.status)} />
+            <Row label={t('common.date')} value={txDate(detail.created_at, lang)} />
           </dl>
         )}
       </Sheet>

@@ -12,6 +12,8 @@ export default {
   'common.max': '最大',
   'common.or': '或',
   'common.select': '选择',
+  'common.status': '状态',
+  'common.date': '日期',
   'common.retry': '重试',
   'common.somethingWrong': '出错了，请重试。',
 

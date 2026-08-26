@@ -12,6 +12,8 @@ export default {
   'common.max': 'MAX',
   'common.or': 'OU',
   'common.select': 'Choisir',
+  'common.status': 'Statut',
+  'common.date': 'Date',
   'common.retry': 'Réessayer',
   'common.somethingWrong': 'Une erreur est survenue. Veuillez réessayer.',
 

@@ -1,0 +1,785 @@
+<title>Console DeFicoins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* STYLE */
+
+/* This guide leans on wide desktop captures and diagrams, so it gets a wider
+   content column than the user guide. */
+.wrap { max-width: 1340px; }
+:root { --measure: 74ch; }
+</style>
+
+<div class="wrap">
+
+  <aside class="rail">
+    <div class="rail-brand">
+      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="m1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#22D3EE"/><stop offset="55%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#4F46E5"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#m1)"/>
+        <g fill="#fff">
+          <path fill-rule="evenodd" d="M16 12h16a20 20 0 0 1 0 40H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Zm16 9a11 11 0 0 0 0 22 11 11 0 0 0 0-22Z"/>
+          <path d="M32 25.5l5.6 3.25v6.5L32 38.5l-5.6-3.25v-6.5z"/>
+        </g>
+      </svg>
+      DeFicoins
+    </div>
+    <nav aria-label="Sommaire">
+      <span class="rail-group">Principes</span>
+      <a href="#modele">Le modèle</a>
+      <a href="#acces">Accès à la console</a>
+      <a href="#tableau">Le tableau de bord</a>
+      <span class="rail-group">Les flux</span>
+      <a href="#flux-envoi">Un envoi</a>
+      <a href="#flux-mdp">Une réinitialisation</a>
+      <a href="#flux-achat">Un achat</a>
+      <a href="#flux-credit">Un dépôt</a>
+      <span class="rail-group">Les écrans</span>
+      <a href="#utilisateurs">Utilisateurs</a>
+      <a href="#fiche">La fiche client</a>
+      <a href="#file">La file d’attente</a>
+      <a href="#marche">Marché</a>
+      <span class="rail-group">Exploitation</span>
+      <a href="#routine">Routine quotidienne</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#depannage">Dépannage</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <header class="hero">
+      <svg class="hero-mark" viewBox="0 0 64 64" role="img" aria-label="DeFicoins">
+        <defs>
+          <linearGradient id="m2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#22D3EE"/><stop offset="55%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#4F46E5"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#m2)"/>
+        <g fill="#fff">
+          <path fill-rule="evenodd" d="M16 12h16a20 20 0 0 1 0 40H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Zm16 9a11 11 0 0 0 0 22 11 11 0 0 0 0-22Z"/>
+          <path d="M32 25.5l5.6 3.25v6.5L32 38.5l-5.6-3.25v-6.5z"/>
+        </g>
+      </svg>
+      <p class="eyebrow">Guide administrateur</p>
+      <h1>La console DeFicoins</h1>
+      <p class="lede">
+        Comment les demandes des clients arrivent jusqu’à vous, ce que chaque
+        bouton déclenche, et ce qu’il faut vérifier avant de cliquer.
+      </p>
+      <div class="hero-rule"></div>
+    </header>
+
+    <!-- ------------------------------------------------ modèle -->
+    <section id="modele">
+      <h2>Le modèle</h2>
+      <p class="section-note">La chose à comprendre avant toute manipulation.</p>
+
+      <p>
+        DeFicoins tient un <strong>registre interne</strong>. Les soldes affichés
+        aux clients sont des lignes en base de données, et
+        <strong>rien n’est connecté à une blockchain</strong> : aucune adresse
+        n’est surveillée, aucune transaction n’est diffusée sur un réseau.
+      </p>
+      <p>
+        Concrètement, l’argent n’apparaît et ne disparaît du registre que
+        <strong>par une action d’administrateur</strong>. Le règlement réel — la
+        réception d’un virement, l’envoi effectif de fonds — se passe en dehors
+        de l’application, et c’est vous qui l’enregistrez ensuite dans la console.
+      </p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 780 240" role="img" aria-label="Le monde réel et le registre DeFicoins sont deux plans distincts, reliés uniquement par les actions de l'administrateur">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+            <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <text x="16" y="26" font-size="11" font-weight="700" letter-spacing="1.4" fill="currentColor" opacity=".62">MONDE RÉEL — HORS APPLICATION</text>
+          <rect x="16" y="38" width="748" height="60" rx="9" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-dasharray="5 4"/>
+          <rect x="40" y="52" width="150" height="32" rx="7" fill="none" stroke="currentColor" stroke-opacity=".55"/>
+          <text x="115" y="72" font-size="12.5" text-anchor="middle" fill="currentColor">Virement reçu</text>
+          <rect x="315" y="52" width="150" height="32" rx="7" fill="none" stroke="currentColor" stroke-opacity=".55"/>
+          <text x="390" y="72" font-size="12.5" text-anchor="middle" fill="currentColor">Espèces, mobile money</text>
+          <rect x="590" y="52" width="150" height="32" rx="7" fill="none" stroke="currentColor" stroke-opacity=".55"/>
+          <text x="665" y="72" font-size="12.5" text-anchor="middle" fill="currentColor">Fonds envoyés</text>
+
+          <rect x="290" y="122" width="200" height="42" rx="9" fill="var(--accent)" fill-opacity=".12" stroke="var(--accent)"/>
+          <text x="390" y="148" font-size="13" font-weight="700" text-anchor="middle" fill="var(--accent)">Vous, dans la console</text>
+
+          <line x1="115" y1="86" x2="330" y2="120" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ahb)"/>
+          <line x1="390" y1="86" x2="390" y2="120" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ahb)"/>
+          <line x1="450" y1="120" x2="660" y2="86" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ahb)"/>
+
+          <text x="16" y="216" font-size="11" font-weight="700" letter-spacing="1.4" fill="currentColor" opacity=".62">REGISTRE DEFICOINS</text>
+          <rect x="230" y="188" width="320" height="34" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".4"/>
+          <text x="390" y="210" font-size="12.5" text-anchor="middle" fill="currentColor">Soldes, transactions, historique</text>
+          <line x1="390" y1="166" x2="390" y2="186" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ahb)"/>
+          <text x="404" y="180" font-size="11" fill="var(--accent)">écrit</text>
+        </svg>
+        <figcaption>
+          Rien ne franchit la frontière tout seul. Chaque mouvement du registre est la
+          conséquence d’une action que vous faites dans la console.
+        </figcaption>
+      </figure>
+
+      <div class="note note-warn">
+        <span class="tag">Conséquence</span>
+        <p>
+          Ne créditez jamais un solde avant d’avoir <strong>constaté</strong> le
+          paiement correspondant, et ne validez un envoi qu’<strong>après</strong>
+          avoir réellement transféré les fonds. La console ne vérifie rien pour vous :
+          elle enregistre ce que vous lui dites.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ accès -->
+    <section id="acces">
+      <h2>Accès à la console</h2>
+
+      <p>
+        La console vit à l’adresse <code>/admin</code> de l’application. Elle n’est
+        liée à aucun compte client : elle a son propre identifiant et son propre mot
+        de passe, définis par les variables d’environnement
+        <code>ADMIN_USER</code> et <code>ADMIN_PASS</code> du serveur.
+      </p>
+
+      <div class="wide">
+        <img src="shots/a-01-connexion.jpg" alt="Écran de connexion de la console d’administration">
+      </div>
+
+      <div class="note note-danger">
+        <span class="tag">Un seul compte</span>
+        <p>
+          Il n’existe qu’un jeu d’identifiants administrateur pour toute la
+          plateforme. Toute personne qui le détient peut créditer n’importe quel
+          solde. Ne le partagez pas par messagerie, et changez-le au départ de
+          quiconque y avait accès.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ tableau -->
+    <section id="tableau">
+      <h2>Le tableau de bord</h2>
+
+      <p>
+        Cinq compteurs en haut de chaque écran. Les quatre derniers sont des
+        <strong>files d’attente</strong> : tant qu’un chiffre n’est pas à zéro,
+        quelqu’un attend une action de votre part.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Compteur</th><th>Ce qu’il compte</th><th>Où le traiter</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Users</strong></td><td>Comptes clients existants.</td><td>Onglet <em>Users</em></td></tr>
+            <tr><td><strong>Pending transfers</strong></td><td>Envois en attente de votre validation.</td><td>Onglet <em>Queue</em></td></tr>
+            <tr><td><strong>Buy orders</strong></td><td>Demandes d’achat ouvertes.</td><td>Onglet <em>Queue</em></td></tr>
+            <tr><td><strong>Password resets</strong></td><td>Clients bloqués hors de leur compte.</td><td>Onglet <em>Queue</em></td></tr>
+            <tr><td><strong>Unread messages</strong></td><td>Messages clients sans réponse.</td><td>Fiche client → <em>Chat</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Les compteurs se rafraîchissent après chaque action. Un chiffre qui ne bouge
+        pas alors que vous venez de traiter la demande signifie que l’action a
+        échoué : rechargez la page et vérifiez.
+      </p>
+    </section>
+
+    <!-- ------------------------------------------------ flux envoi -->
+    <section id="flux-envoi">
+      <h2>Un envoi, de bout en bout</h2>
+      <p class="section-note">Le flux le plus sensible : c’est de l’argent qui sort.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 780 300" role="img" aria-label="Parcours d'un envoi : le client soumet, le solde est débité immédiatement, l'admin approuve ou rejette, un rejet recrédite le solde">
+          <defs>
+            <marker id="e1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+            <marker id="e2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <text x="14" y="20" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="currentColor" opacity=".6">CLIENT</text>
+          <text x="14" y="150" font-size="10.5" font-weight="700" letter-spacing="1.3" fill="var(--accent)" opacity=".9">ADMIN</text>
+          <line x1="0" y1="96" x2="780" y2="96" stroke="currentColor" stroke-opacity=".14"/>
+
+          <rect x="70" y="34" width="132" height="44" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".45"/>
+          <text x="136" y="52" font-size="12.5" text-anchor="middle" fill="currentColor">Confirme</text>
+          <text x="136" y="68" font-size="12.5" text-anchor="middle" fill="currentColor">l’envoi</text>
+
+          <rect x="262" y="34" width="150" height="44" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".45"/>
+          <text x="337" y="52" font-size="12.5" text-anchor="middle" fill="currentColor">Solde débité</text>
+          <text x="337" y="68" font-size="11.5" text-anchor="middle" fill="currentColor" opacity=".7">immédiatement</text>
+
+          <rect x="472" y="34" width="132" height="44" rx="8" fill="var(--warn)" fill-opacity=".13" stroke="var(--warn)" stroke-opacity=".7"/>
+          <text x="538" y="61" font-size="12.5" text-anchor="middle" fill="var(--warn)" font-weight="600">En attente</text>
+
+          <line x1="202" y1="56" x2="256" y2="56" stroke="currentColor" stroke-width="1.5" marker-end="url(#e1)"/>
+          <line x1="412" y1="56" x2="466" y2="56" stroke="currentColor" stroke-width="1.5" marker-end="url(#e1)"/>
+
+          <line x1="538" y1="78" x2="538" y2="172" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#e2)"/>
+          <text x="550" y="126" font-size="11" fill="var(--accent)">apparaît en file</text>
+
+          <rect x="452" y="176" width="172" height="40" rx="8" fill="var(--accent)" fill-opacity=".12" stroke="var(--accent)"/>
+          <text x="538" y="201" font-size="12.5" text-anchor="middle" fill="var(--accent)" font-weight="600">Queue → Transfers</text>
+
+          <path d="M 452 196 L 340 196 L 340 244" fill="none" stroke="var(--ok)" stroke-width="1.5" marker-end="url(#e1)" stroke-opacity=".9"/>
+          <path d="M 624 196 L 704 196 L 704 244" fill="none" stroke="var(--danger)" stroke-width="1.5" marker-end="url(#e1)" stroke-opacity=".9"/>
+
+          <rect x="228" y="248" width="224" height="40" rx="8" fill="var(--ok)" fill-opacity=".12" stroke="var(--ok)"/>
+          <text x="340" y="273" font-size="12.5" text-anchor="middle" fill="var(--ok)" font-weight="600">Approve → Effectuée</text>
+
+          <rect x="596" y="248" width="176" height="40" rx="8" fill="var(--danger)" fill-opacity=".12" stroke="var(--danger)"/>
+          <text x="684" y="266" font-size="12" text-anchor="middle" fill="var(--danger)" font-weight="600">Reject → Annulée</text>
+          <text x="684" y="281" font-size="11" text-anchor="middle" fill="var(--danger)">solde recrédité</text>
+
+          <text x="396" y="188" font-size="11" text-anchor="middle" fill="var(--ok)">fonds transférés</text>
+          <text x="664" y="188" font-size="11" text-anchor="middle" fill="var(--danger)">refus</text>
+        </svg>
+        <figcaption>
+          Le débit a lieu <strong>à la soumission</strong>, pas à la validation : le
+          client ne peut pas engager deux fois le même solde pendant que la demande
+          attend. Un rejet le lui restitue intégralement.
+        </figcaption>
+      </figure>
+
+      <div class="note note-info">
+        <span class="tag">Ordre des opérations</span>
+        <p>
+          <strong>Transférez d’abord les fonds, cliquez <em>Approve</em> ensuite.</strong>
+          Approuver ne déclenche aucun virement : le bouton se contente de marquer la
+          transaction comme effectuée dans l’historique du client.
+        </p>
+      </div>
+
+      <h3>Avant d’approuver, vérifiez</h3>
+      <ul>
+        <li>La <strong>devise</strong> et le <strong>montant</strong> correspondent à ce que vous avez transféré.</li>
+        <li>L’<strong>adresse de destination</strong> est bien celle que le client a communiquée — comparez-la avec sa conversation support.</li>
+        <li>Le compte n’est pas <span class="pill pill-danger">suspended</span>.</li>
+        <li>Le montant ne sort pas de l’ordinaire pour ce client. En cas de doute, écrivez-lui avant.</li>
+      </ul>
+
+      <div class="note note-warn">
+        <span class="tag">Irréversible</span>
+        <p>
+          Une transaction validée ne peut plus être rejetée, ni une transaction
+          rejetée re-validée : la console renvoie une erreur. Pour corriger une erreur
+          de manipulation, il faut passer par un ajustement manuel de solde depuis la
+          fiche client.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ flux mdp -->
+    <section id="flux-mdp">
+      <h2>Une réinitialisation de mot de passe</h2>
+      <p class="section-note">Du client bloqué jusqu’à sa reconnexion.</p>
+
+      <p>
+        <strong>Aucun e-mail n’est envoyé.</strong> La réinitialisation est entièrement
+        manuelle : le client demande, vous définissez un nouveau mot de passe, et il
+        le reçoit dans sa conversation support.
+      </p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 780 400" role="img" aria-label="Parcours d'une réinitialisation de mot de passe : le client soumet le formulaire de récupération, une demande apparaît dans la file admin, l'admin définit un mot de passe, le client le reçoit dans le chat et se reconnecte">
+          <defs>
+            <marker id="p1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+            <marker id="p2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+            </marker>
+          </defs>
+
+          <line x1="150" y1="46" x2="150" y2="376" stroke="currentColor" stroke-opacity=".18" stroke-dasharray="4 4"/>
+          <line x1="392" y1="46" x2="392" y2="376" stroke="var(--accent)" stroke-opacity=".3" stroke-dasharray="4 4"/>
+          <line x1="640" y1="46" x2="640" y2="376" stroke="currentColor" stroke-opacity=".18" stroke-dasharray="4 4"/>
+
+          <text x="150" y="26" font-size="11" font-weight="700" letter-spacing="1.2" text-anchor="middle" fill="currentColor" opacity=".7">CLIENT</text>
+          <text x="392" y="26" font-size="11" font-weight="700" letter-spacing="1.2" text-anchor="middle" fill="var(--accent)">SERVEUR</text>
+          <text x="640" y="26" font-size="11" font-weight="700" letter-spacing="1.2" text-anchor="middle" fill="currentColor" opacity=".7">ADMIN</text>
+
+          <rect x="44" y="52" width="212" height="40" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".45"/>
+          <text x="150" y="70" font-size="12.5" text-anchor="middle" fill="currentColor">« Récupérer un portefeuille »</text>
+          <text x="150" y="85" font-size="11.5" text-anchor="middle" fill="currentColor" opacity=".7">saisit son e-mail</text>
+
+          <line x1="256" y1="72" x2="386" y2="72" stroke="currentColor" stroke-width="1.5" marker-end="url(#p1)"/>
+
+          <rect x="286" y="106" width="212" height="56" rx="8" fill="var(--accent)" fill-opacity=".1" stroke="var(--accent)"/>
+          <text x="392" y="126" font-size="12" text-anchor="middle" fill="var(--accent)">crée une demande</text>
+          <text x="392" y="141" font-size="12" text-anchor="middle" fill="var(--accent)">+ un message dans le fil</text>
+          <text x="392" y="156" font-size="11" text-anchor="middle" fill="var(--accent)" opacity=".8">1 seule par quart d’heure</text>
+          <line x1="392" y1="92" x2="392" y2="104" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#p2)"/>
+
+          <path d="M 386 176 L 150 176" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#p1)" stroke-opacity=".65"/>
+          <text x="268" y="170" font-size="11" text-anchor="middle" fill="currentColor" opacity=".7">« Demande enregistrée »</text>
+
+          <line x1="498" y1="134" x2="634" y2="134" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#p2)"/>
+          <rect x="534" y="196" width="212" height="40" rx="8" fill="var(--warn)" fill-opacity=".13" stroke="var(--warn)" stroke-opacity=".75"/>
+          <text x="640" y="221" font-size="12.5" text-anchor="middle" fill="var(--warn)" font-weight="600">Queue → Password resets</text>
+          <line x1="640" y1="140" x2="640" y2="194" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#p2)"/>
+
+          <rect x="534" y="256" width="212" height="40" rx="8" fill="var(--ok)" fill-opacity=".12" stroke="var(--ok)"/>
+          <text x="640" y="273" font-size="12.5" text-anchor="middle" fill="var(--ok)" font-weight="600">Set and notify</text>
+          <text x="640" y="288" font-size="11" text-anchor="middle" fill="var(--ok)">saisit le nouveau mot de passe</text>
+          <line x1="640" y1="236" x2="640" y2="254" stroke="currentColor" stroke-width="1.5" marker-end="url(#p1)"/>
+
+          <path d="M 534 276 L 398 276" fill="none" stroke="var(--ok)" stroke-width="1.5" marker-end="url(#p1)"/>
+          <rect x="286" y="306" width="212" height="40" rx="8" fill="var(--accent)" fill-opacity=".1" stroke="var(--accent)"/>
+          <text x="392" y="324" font-size="12" text-anchor="middle" fill="var(--accent)">mot de passe remplacé</text>
+          <text x="392" y="338" font-size="12" text-anchor="middle" fill="var(--accent)">demande close</text>
+          <line x1="392" y1="282" x2="392" y2="304" stroke="var(--ok)" stroke-width="1.5" marker-end="url(#p1)"/>
+
+          <path d="M 286 326 L 150 326" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#p1)"/>
+          <rect x="44" y="350" width="212" height="34" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".45"/>
+          <text x="150" y="371" font-size="12" text-anchor="middle" fill="currentColor">message reçu, se reconnecte</text>
+          <line x1="150" y1="332" x2="150" y2="348" stroke="currentColor" stroke-width="1.5" marker-end="url(#p1)"/>
+        </svg>
+        <figcaption>
+          La demande et la notification voyagent par le fil support du client : c’est le
+          seul canal. Le formulaire répond la même chose que l’adresse existe ou non,
+          pour qu’il ne serve pas à découvrir qui a un compte.
+        </figcaption>
+      </figure>
+
+      <h3>Votre part, en trois gestes</h3>
+      <ol class="steps">
+        <li><strong>Ouvrez <em>Queue → Password reset requests</em></strong> La ligne donne le nom, l’e-mail, l’état du compte et la date de la demande.</li>
+        <li><strong>Vérifiez que la demande est légitime</strong> Si le montant du portefeuille est important ou si quelque chose vous semble inhabituel, contactez le client par un autre canal avant d’agir.</li>
+        <li><strong>Saisissez un mot de passe et cliquez <em>Set and notify</em></strong> Huit caractères minimum. Le mot de passe est appliqué, la demande se ferme, et le client est prévenu dans son fil support.</li>
+      </ol>
+
+      <div class="wide">
+        <img src="shots/a-03-file-attente.jpg" alt="Onglet Queue montrant les demandes de réinitialisation, les transferts en attente et les commandes d’achat">
+      </div>
+
+      <div class="note note-warn">
+        <span class="tag">Le point faible</span>
+        <p>
+          Ce flux repose entièrement sur votre jugement : <strong>rien ne prouve que la
+          personne qui demande est bien le titulaire du compte</strong>. C’est la porte
+          d’entrée d’une prise de contrôle par ingénierie sociale. Sur un compte au
+          solde significatif, exigez une vérification hors application.
+        </p>
+      </div>
+
+      <h4>Le bouton <em>Dismiss</em></h4>
+      <p>
+        Ferme la demande <strong>sans toucher au mot de passe</strong>. À utiliser
+        quand le client s’est finalement reconnecté seul, ou quand la demande vous
+        paraît suspecte. Le client n’est pas notifié : dites-le-lui dans le chat.
+      </p>
+    </section>
+
+    <!-- ------------------------------------------------ flux achat -->
+    <section id="flux-achat">
+      <h2>Un achat</h2>
+
+      <p>
+        Le bouton <em>Acheter</em> de l’application ne prend aucun paiement. Il
+        enregistre une intention et ouvre la conversation : tout le reste se règle
+        entre vous et le client.
+      </p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 780 220" role="img" aria-label="Parcours d'un achat : le client saisit un montant, une commande et un message sont créés, l'admin encaisse hors application, crédite le solde puis marque la commande comme honorée">
+          <defs>
+            <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <rect x="14" y="60" width="150" height="52" rx="8" fill="currentColor" fill-opacity=".07" stroke="currentColor" stroke-opacity=".45"/>
+          <text x="89" y="81" font-size="12.5" text-anchor="middle" fill="currentColor">Client saisit</text>
+          <text x="89" y="97" font-size="12.5" text-anchor="middle" fill="currentColor">un montant en $</text>
+
+          <rect x="204" y="60" width="150" height="52" rx="8" fill="var(--warn)" fill-opacity=".13" stroke="var(--warn)" stroke-opacity=".7"/>
+          <text x="279" y="81" font-size="12.5" text-anchor="middle" fill="var(--warn)" font-weight="600">Buy order</text>
+          <text x="279" y="97" font-size="11.5" text-anchor="middle" fill="var(--warn)">+ fil support ouvert</text>
+
+          <rect x="394" y="60" width="166" height="52" rx="8" fill="var(--accent)" fill-opacity=".12" stroke="var(--accent)"/>
+          <text x="477" y="81" font-size="12.5" text-anchor="middle" fill="var(--accent)" font-weight="600">Vous encaissez</text>
+          <text x="477" y="97" font-size="11.5" text-anchor="middle" fill="var(--accent)">hors application</text>
+
+          <rect x="600" y="60" width="166" height="52" rx="8" fill="var(--ok)" fill-opacity=".12" stroke="var(--ok)"/>
+          <text x="683" y="81" font-size="12.5" text-anchor="middle" fill="var(--ok)" font-weight="600">Crédit du solde</text>
+          <text x="683" y="97" font-size="11.5" text-anchor="middle" fill="var(--ok)">puis Mark fulfilled</text>
+
+          <line x1="164" y1="86" x2="198" y2="86" stroke="currentColor" stroke-width="1.5" marker-end="url(#b1)"/>
+          <line x1="354" y1="86" x2="388" y2="86" stroke="currentColor" stroke-width="1.5" marker-end="url(#b1)"/>
+          <line x1="560" y1="86" x2="594" y2="86" stroke="currentColor" stroke-width="1.5" marker-end="url(#b1)"/>
+
+          <text x="279" y="140" font-size="11" text-anchor="middle" fill="currentColor" opacity=".75">l’application s’arrête ici</text>
+          <line x1="279" y1="118" x2="279" y2="130" stroke="currentColor" stroke-opacity=".5" stroke-width="1.2"/>
+          <text x="580" y="140" font-size="11" text-anchor="middle" fill="currentColor" opacity=".75">à votre main, dans cet ordre</text>
+          <line x1="580" y1="118" x2="580" y2="130" stroke="currentColor" stroke-opacity=".5" stroke-width="1.2"/>
+
+          <text x="390" y="184" font-size="12" text-anchor="middle" fill="currentColor" opacity=".85">Le montant en dollars est une intention, pas un paiement encaissé.</text>
+        </svg>
+        <figcaption>
+          <em>Mark fulfilled</em> ne crédite rien. C’est une étiquette de suivi : le
+          crédit se fait séparément, depuis la fiche client.
+        </figcaption>
+      </figure>
+
+      <div class="note note-danger">
+        <span class="tag">Erreur classique</span>
+        <p>
+          Cliquer <em>Mark fulfilled</em> en croyant que le client sera crédité. Il ne
+          le sera pas. <strong>Créditez d’abord le solde</strong> depuis la fiche
+          client, <strong>puis</strong> marquez la commande comme honorée.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ flux crédit -->
+    <section id="flux-credit">
+      <h2>Un dépôt</h2>
+
+      <p>
+        Un client qui utilise l’écran <em>Recevoir</em> obtient une adresse et vous
+        annonce un versement. Comme rien n’est surveillé sur la chaîne,
+        <strong>c’est vous qui constatez l’arrivée des fonds</strong> et l’enregistrez.
+      </p>
+
+      <ol class="steps">
+        <li><strong>Constatez le versement</strong> Sur votre compte bancaire, votre portefeuille réel, ou votre caisse — hors de l’application.</li>
+        <li><strong>Ouvrez la fiche du client</strong> Onglet <em>Users</em>, puis <em>Manage</em> sur la ligne concernée.</li>
+        <li><strong>Créditez</strong> Onglet <em>Balances</em> : choisissez la devise, saisissez la quantité, ajoutez une note, cliquez <em>Credit</em>.</li>
+        <li><strong>Prévenez le client</strong> Un mot dans son fil support ; le crédit apparaît déjà dans son historique.</li>
+      </ol>
+
+      <div class="note note-info">
+        <span class="tag">La note compte</span>
+        <p>
+          Le champ <em>Note</em> est repris dans l’historique visible par le client.
+          Écrivez-y de quoi retrouver l’opération plus tard : « Virement du 14/03 »,
+          « Espèces agence Cocody ». C’est votre seule piste d’audit.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ utilisateurs -->
+    <section id="utilisateurs">
+      <h2>Utilisateurs</h2>
+
+      <p>
+        La liste de tous les comptes, du plus récent au plus ancien, avec la valeur
+        totale du portefeuille et le nombre de messages non lus.
+      </p>
+
+      <div class="wide">
+        <img src="shots/a-02-utilisateurs.jpg" alt="Liste des utilisateurs avec statut, valeur du portefeuille, messages non lus et date d’inscription">
+      </div>
+
+      <p>
+        Le champ de recherche filtre par nom et par e-mail. La colonne
+        <strong>Unread</strong> signale d’un coup d’œil qui attend une réponse.
+      </p>
+    </section>
+
+    <!-- ------------------------------------------------ fiche -->
+    <section id="fiche">
+      <h2>La fiche client</h2>
+      <p class="section-note">Quatre onglets, ouverts par le lien <em>Manage</em>.</p>
+
+      <h3>Balances — soldes et adresses</h3>
+      <div class="wide">
+        <img src="shots/a-05-fiche-soldes.jpg" alt="Onglet Balances : ajustement de solde, avoirs détenus et adresses de dépôt par devise">
+      </div>
+
+      <h4>Créditer ou débiter</h4>
+      <p>
+        Choisissez la devise, saisissez une quantité — <strong>en unités de la devise,
+        pas en dollars</strong> — puis <em>Credit</em> ou <em>Debit</em>. Chaque
+        ajustement écrit une ligne dans l’historique du client.
+      </p>
+      <p>
+        Un débit qui ferait passer le solde sous zéro est refusé. Une quantité nulle
+        aussi.
+      </p>
+
+      <div class="note note-warn">
+        <span class="tag">Vérifiez l’unité</span>
+        <p>
+          Saisir <code>1</code> en BTC crédite un bitcoin entier, pas un dollar. La
+          liste des avoirs, juste en dessous, affiche la contre-valeur : relisez-la
+          après chaque ajustement.
+        </p>
+      </div>
+
+      <h4>Adresses de dépôt</h4>
+      <p>
+        Chaque client a une adresse par devise, générée automatiquement. Le lien
+        <em>Edit</em> permet de la remplacer par une adresse réelle que vous
+        contrôlez. La console refuse une adresse dont le format ne correspond pas à
+        la devise.
+      </p>
+
+      <h3>Activity — transactions et achats</h3>
+      <div class="wide">
+        <img src="shots/a-06-fiche-activite.jpg" alt="Onglet Activity listant les transactions et les commandes d’achat du client">
+      </div>
+      <p>
+        L’historique complet du client. Les transactions
+        <span class="pill pill-warn">pending</span> peuvent être approuvées ou
+        rejetées directement ici, sans passer par la file.
+      </p>
+
+      <h3>Chat — la conversation support</h3>
+      <div class="wide">
+        <img src="shots/a-07-fiche-chat.jpg" alt="Onglet Chat affichant le fil de conversation et le champ de réponse">
+      </div>
+      <p>
+        Vos réponses arrivent dans la bulle de support du client, dans l’application.
+        C’est aussi ici qu’atterrissent les demandes d’achat et les demandes de
+        réinitialisation.
+      </p>
+
+      <div class="note note-danger">
+        <span class="tag">Jamais</span>
+        <p>
+          Ne demandez jamais à un client son mot de passe ni ses douze mots de
+          récupération. Vous n’en avez besoin pour rien, et le lui demander détruit le
+          seul repère qui lui permet de reconnaître une tentative de fraude.
+        </p>
+      </div>
+
+      <h3>Account — accès et mot de passe</h3>
+      <div class="wide">
+        <img src="shots/a-08-fiche-compte.jpg" alt="Onglet Account avec la suspension du compte et la réinitialisation du mot de passe">
+      </div>
+      <p>
+        <strong>Suspend account</strong> bloque immédiatement la connexion. Le client
+        voit « Ce compte a été suspendu ». Ses fonds restent intacts et le compte peut
+        être réactivé à tout moment.
+      </p>
+      <p>
+        <strong>Reset password</strong> change le mot de passe sans passer par une
+        demande en file — et <strong>sans prévenir le client</strong>. Communiquez-le
+        vous-même dans le chat.
+      </p>
+    </section>
+
+    <!-- ------------------------------------------------ file -->
+    <section id="file">
+      <h2>La file d’attente</h2>
+
+      <p>
+        Tout ce qui attend une décision humaine, sur un seul écran : réinitialisations,
+        transferts, commandes d’achat. Le détail de chaque traitement est décrit dans
+        les sections de flux ci-dessus.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Section</th><th>Action</th><th>Effet immédiat</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Password resets</td>
+              <td><em>Set and notify</em></td>
+              <td>Mot de passe remplacé, demande close, client prévenu dans le chat.</td>
+            </tr>
+            <tr>
+              <td>Password resets</td>
+              <td><em>Dismiss</em></td>
+              <td>Demande close. Mot de passe inchangé, client non prévenu.</td>
+            </tr>
+            <tr>
+              <td>Pending transfers</td>
+              <td><em>Approve</em></td>
+              <td>Transaction marquée <span class="pill pill-info">Effectuée</span>. Le solde était déjà débité.</td>
+            </tr>
+            <tr>
+              <td>Pending transfers</td>
+              <td><em>Reject</em></td>
+              <td>Transaction <span class="pill pill-danger">Annulée</span> et solde recrédité.</td>
+            </tr>
+            <tr>
+              <td>Buy orders</td>
+              <td><em>Mark fulfilled</em></td>
+              <td>Commande close. <strong>Aucun crédit</strong> n’est effectué.</td>
+            </tr>
+            <tr>
+              <td>Buy orders</td>
+              <td><em>Cancel</em></td>
+              <td>Commande close sans suite.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ marché -->
+    <section id="marche">
+      <h2>Marché</h2>
+
+      <div class="wide">
+        <img src="shots/a-04-marche.jpg" alt="Onglet Market listant les devises avec prix en direct, prix manuel et interrupteur d’activation">
+      </div>
+
+      <p>
+        Les cours proviennent d’un flux public, rafraîchi côté serveur toutes les
+        quarante-cinq secondes. Deux réglages par devise :
+      </p>
+
+      <dl class="kv">
+        <div>
+          <dt>Manual price</dt>
+          <dd>Fige le cours à la valeur saisie, pour tout le monde. Laissez le champ vide pour revenir au flux en direct.</dd>
+        </div>
+        <div>
+          <dt>Enabled</dt>
+          <dd>Désactivée, la devise disparaît des portefeuilles, du marché et de tous les sélecteurs.</dd>
+        </div>
+      </dl>
+
+      <div class="note note-warn">
+        <span class="tag">Portée</span>
+        <p>
+          Un prix manuel s’applique <strong>à tous les clients</strong> et sert de base
+          aux calculs d’échange. Une valeur erronée fausse instantanément tous les
+          portefeuilles qui détiennent cette devise. Vérifiez le chiffre avant
+          d’enregistrer.
+        </p>
+      </div>
+
+      <p>
+        Désactiver une devise <strong>ne supprime pas</strong> les soldes que des
+        clients y détiennent : ces avoirs deviennent simplement invisibles et
+        inutilisables jusqu’à réactivation.
+      </p>
+    </section>
+
+    <!-- ------------------------------------------------ routine -->
+    <section id="routine">
+      <h2>Routine quotidienne</h2>
+
+      <ol class="steps">
+        <li><strong>Ouvrez la console et lisez les compteurs</strong> S’ils sont tous à zéro sauf <em>Users</em>, il n’y a rien à traiter.</li>
+        <li><strong>Traitez les réinitialisations</strong> Ce sont des clients bloqués hors de leur compte : c’est le plus urgent.</li>
+        <li><strong>Traitez les transferts</strong> Rapprochez chaque demande de votre relevé, transférez, puis approuvez.</li>
+        <li><strong>Traitez les commandes d’achat</strong> Encaissez, créditez la fiche, puis marquez la commande honorée.</li>
+        <li><strong>Répondez aux messages</strong> Parcourez la colonne <em>Unread</em> de la liste des utilisateurs.</li>
+      </ol>
+
+      <div class="note note-info">
+        <span class="tag">Tenez un journal</span>
+        <p>
+          La console ne trace pas qui a fait quoi ni quand. Tenez un registre externe
+          des crédits, débits et validations : c’est la seule façon de reconstituer une
+          opération contestée.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ sécurité -->
+    <section id="securite">
+      <h2>Sécurité</h2>
+
+      <h4>Le mot de passe administrateur</h4>
+      <ul>
+        <li>Long et unique, réservé à cet usage.</li>
+        <li>Jamais transmis par messagerie ni noté dans un document partagé.</li>
+        <li>Changé au départ de toute personne qui y avait accès.</li>
+      </ul>
+
+      <h4>Ce qui doit vous alerter</h4>
+      <ul>
+        <li>Une demande de réinitialisation sur un compte au solde important, suivie d’un envoi vers une adresse inconnue.</li>
+        <li>Un client insistant, qui invoque l’urgence pour vous faire sauter une vérification.</li>
+        <li>Une adresse de destination différente de celle utilisée les fois précédentes.</li>
+        <li>Une série d’opérations juste sous un seuil de contrôle.</li>
+      </ul>
+
+      <div class="note note-warn">
+        <span class="tag">Aucun filet</span>
+        <p>
+          La console n’impose aucun plafond, aucune double validation, aucune trace
+          d’auteur. Un clic de trop est immédiat et définitif. Prenez le temps de
+          relire l’écran avant de valider — c’est le seul contrôle qui existe.
+        </p>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------ dépannage -->
+    <section id="depannage">
+      <h2>Dépannage</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Symptôme</th><th>Cause probable</th><th>Que faire</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>La console redemande le mot de passe</td>
+              <td>Session expirée ou serveur redémarré.</td>
+              <td>Reconnectez-vous.</td>
+            </tr>
+            <tr>
+              <td>« This transaction is already settled »</td>
+              <td>La transaction a déjà été traitée, peut-être dans un autre onglet.</td>
+              <td>Rechargez la page pour voir son état réel.</td>
+            </tr>
+            <tr>
+              <td>« That would put the balance below zero »</td>
+              <td>Le débit dépasse le solde, ou un envoi en attente en réserve une part.</td>
+              <td>Consultez <em>Activity</em> avant d’ajuster.</td>
+            </tr>
+            <tr>
+              <td>Une adresse est refusée à l’édition</td>
+              <td>Son format ne correspond pas à la devise.</td>
+              <td>Vérifiez la devise et recopiez l’adresse en entier.</td>
+            </tr>
+            <tr>
+              <td>Les cours affichent « — »</td>
+              <td>Le flux de prix est indisponible.</td>
+              <td>Les soldes restent justes en quantité. Attendez, ou fixez un prix manuel si l’interruption dure.</td>
+            </tr>
+            <tr>
+              <td>Un client ne voit pas son crédit</td>
+              <td>Son application affiche des données en cache.</td>
+              <td>Demandez-lui de toucher ↻ sur l’écran d’accueil.</td>
+            </tr>
+            <tr>
+              <td>Un client dit ne pas recevoir vos messages</td>
+              <td>Réponse envoyée sur la mauvaise fiche.</td>
+              <td>Vérifiez l’e-mail en tête de la fiche ouverte.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="docfoot">
+      <p>
+        Guide administrateur DeFicoins — les captures proviennent de la console réelle,
+        alimentée par un jeu de données de démonstration.
+      </p>
+    </footer>
+
+  </main>
+</div>
