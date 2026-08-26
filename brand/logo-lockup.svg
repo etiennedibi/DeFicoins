@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64" role="img" aria-label="DeFicoins">
+  <defs>
+    <linearGradient id="dfGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="55%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#dfGrad2)"/>
+  <g fill="#fff">
+    <path fill-rule="evenodd" d="M16 12h16a20 20 0 0 1 0 40H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4Zm16 9a11 11 0 0 0 0 22 11 11 0 0 0 0-22Z"/>
+    <path d="M32 25.5l5.6 3.25v6.5L32 38.5l-5.6-3.25v-6.5z"/>
+  </g>
+  <text x="80" y="41" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" font-weight="700" letter-spacing="-0.6">
+    <tspan fill="currentColor">DeFi</tspan><tspan fill="#3B82F6">coins</tspan>
+  </text>
+</svg>

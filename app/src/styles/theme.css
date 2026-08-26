@@ -1,0 +1,49 @@
+/* DeFicoins — design tokens.
+   Dark-first, mirroring the mobile wallet reference: deep navy ground,
+   raised card surfaces, a single blue accent, gradient reserved for brand. */
+
+:root {
+  /* ground & surfaces */
+  --bg:          #0A1220;
+  --bg-grad-top: #0D1A2E;
+  --surface:     #131F35;
+  --surface-2:   #1A2842;
+  --surface-3:   #22334F;
+  --border:      #223350;
+  --border-soft: #1A2740;
+
+  /* type */
+  --text:        #E8EDF5;
+  --text-dim:    #8FA0BC;
+  --text-mute:   #5E708C;
+
+  /* brand */
+  --brand:       #3B82F6;
+  --brand-hi:    #5B9BFF;
+  --brand-lo:    #2A63C4;
+  --cyan:        #22D3EE;
+  --indigo:      #4F46E5;
+  --grad-brand:  linear-gradient(135deg, #22D3EE 0%, #3B82F6 55%, #4F46E5 100%);
+
+  /* state */
+  --up:          #22C55E;
+  --down:        #F0556B;
+  --warn:        #F0A93B;
+  --info:        #38BDF8;
+
+  /* shape */
+  --r-sm: 10px; --r-md: 14px; --r-lg: 18px; --r-xl: 24px; --r-pill: 999px;
+
+  /* elevation */
+  --sh-1: 0 1px 2px rgba(0,0,0,.35);
+  --sh-2: 0 6px 20px rgba(0,0,0,.38);
+  --sh-3: 0 18px 48px rgba(0,0,0,.5);
+
+  /* layout */
+  --app-max: 480px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-t: env(safe-area-inset-top, 0px);
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
