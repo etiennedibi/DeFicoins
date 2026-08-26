@@ -1,3 +1,8 @@
+/* Loaded here rather than only in server/index.js: scripts import this module
+   directly, and without .env they would silently fall back to the local file
+   while the running server talks to Turso — two different databases. */
+import 'dotenv/config';
+
 import { createClient } from '@libsql/client';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -14,6 +19,10 @@ export const db = createClient({
   url,
   ...(process.env.TURSO_AUTH_TOKEN ? { authToken: process.env.TURSO_AUTH_TOKEN } : {}),
 });
+
+/* Which database this process is talking to — worth one line of output, since
+   pointing at the wrong one is otherwise invisible until data goes missing. */
+export const DB_TARGET = url;
 
 /* libsql returns positional rows; every caller wants objects. */
 export function toObjects(result) {

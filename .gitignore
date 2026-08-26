@@ -7,3 +7,4 @@ shots/
 brand/_*.png
 server/*.db
 shots-*/
+*.code-workspace

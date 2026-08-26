@@ -26,7 +26,7 @@ key management, and in most jurisdictions a VASP/PSAN licence).
 |---|---|
 | Client | React 18 + Vite 6, one SPA, code-split per route |
 | API | Express 5 |
-| Data | libSQL — Turso when configured, a local file otherwise |
+| Data | libSQL — Turso when `TURSO_DATABASE_URL` is set, a local file otherwise |
 | Prices | CoinGecko public API, cached server-side for 45 s |
 | Auth | bcrypt hashes + HMAC-signed stateless session tokens |
 | i18n | 8 languages, one lazy-loaded chunk each |
@@ -48,6 +48,15 @@ npm run dev               # Vite on :5173, proxying /api to :4000
 ```
 
 The wallet is at `/`, the admin console at `/admin`.
+
+### Which database
+
+`server/lib/db.js` picks the target from `.env`: Turso when
+`TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` are set, otherwise a local
+`server/deficoins.db` so a fresh clone runs with no external setup. The schema
+is created on first connect either way, so pointing at an empty Turso database
+is all the migration there is. `seed-demo.mjs` prints the target it is about to
+write to.
 
 `.env` must set `SESSION_SECRET` in production — the server refuses to start
 without one when `NODE_ENV=production`, because every session token is signed

@@ -3,7 +3,7 @@
 
    Usage: node scripts/seed-demo.mjs [baseUrl] */
 
-import { db, toObjects } from '../server/lib/db.js';
+import { db, toObjects, DB_TARGET } from '../server/lib/db.js';
 
 const BASE = process.argv[2] || 'http://localhost:4000';
 const ADMIN_PASS = process.env.ADMIN_PASS || 'dev-admin-pass';
@@ -24,6 +24,8 @@ async function call(method, path, { token, body } = {}) {
   if (!res.ok) throw new Error(`${method} ${path} -> ${res.status} ${JSON.stringify(json)}`);
   return json;
 }
+
+console.log('database: ' + DB_TARGET);
 
 /* Wipe every generated account — the demo set and anything left behind by the
    test scripts — so re-running this gives exactly the same starting point
