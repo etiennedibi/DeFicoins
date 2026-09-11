@@ -1,0 +1,21 @@
+node_modules
+dist
+.git
+.github
+.env
+.env.*
+!.env.example
+
+# local database and uploads never belong in an image
+server/*.db
+server/uploads
+
+# tooling and documentation that the running server does not need
+docs
+shots
+shots-*
+scripts
+brand
+*.md
+*.log
+*.code-workspace

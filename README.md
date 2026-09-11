@@ -62,6 +62,41 @@ write to.
 without one when `NODE_ENV=production`, because every session token is signed
 with it.
 
+## Deploying to Railway
+
+The repository ships a multi-stage `Dockerfile` and a `railway.json`, so Railway
+builds and runs it with no further configuration: point a new service at the
+GitHub repo and it picks both up.
+
+Set these as **service variables** — never commit a `.env`:
+
+| Variable | Value |
+|---|---|
+| `NODE_ENV` | `production` |
+| `SESSION_SECRET` | a long random string (`node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`) |
+| `ADMIN_USER` | the admin console username |
+| `ADMIN_PASS` | a strong password |
+| `TURSO_DATABASE_URL` | `libsql://<your-db>.turso.io` |
+| `TURSO_AUTH_TOKEN` | the matching Turso token |
+
+Do **not** set `PORT`: Railway injects it, and the server reads it.
+
+Turso is not optional here. Railway's filesystem is ephemeral, so the local
+SQLite fallback would be wiped on every deploy — the server would come back up
+with an empty database each time. `SESSION_SECRET` is enforced: the process
+exits at boot without one when `NODE_ENV=production`.
+
+Then generate a domain under Settings → Networking. The wallet is served at
+`/`, the admin console at `/admin`, and Railway's health check watches
+`/api/health`.
+
+### What the image contains
+
+The build stage installs everything and runs Vite; the runtime stage reinstalls
+with `--omit=dev` and copies in only `server/` and the built `dist/`. Vite,
+sharp and puppeteer-core never reach the running image, and it runs as the
+unprivileged `node` user.
+
 ## Layout
 
 ```
@@ -82,6 +117,8 @@ server/
   lib/market.js        price feed with cache and admin overrides
   lib/auth.js          hashing, tokens, phrase and address generation
   lib/db.js            schema and migrations
+Dockerfile             two-stage build: bundle the SPA, then a lean runtime
+railway.json           builder, health check and restart policy
 scripts/
   e2e.mjs              57 checks over the live API
   test-reset.mjs       23 checks over the password-reset flow
